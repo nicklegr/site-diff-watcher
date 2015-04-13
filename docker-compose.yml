@@ -1,0 +1,15 @@
+web:
+  build: .
+  links:
+    - mongodb
+  ports:
+    - "80:80"
+  # environment:
+  #   VIRTUAL_HOST: hoge.example.com
+  # restart: always
+mongodb:
+  image: mongo
+  command: mongod --smallfiles
+  # restart: always
+  # volumes:
+  #   - ./mongodb:/data/db
