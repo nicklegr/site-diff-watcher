@@ -2,5 +2,5 @@ require 'bundler'
 Bundler.require
 
 get "/" do
-  "Hello, world!"  
+  slim :index
 end
