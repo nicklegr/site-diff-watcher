@@ -7,6 +7,12 @@ web:
   # environment:
   #   VIRTUAL_HOST: hoge.example.com
   # restart: always
+worker:
+  build: .
+  command: bundle exec ruby /usr/src/app/worker.rb
+  links:
+    - mongodb
+  # restart: always
 mongodb:
   image: mongo
   command: mongod --smallfiles
