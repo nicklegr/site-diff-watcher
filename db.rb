@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require "mongoid"
+require "nokogiri"
 
 class Site
   include Mongoid::Document
@@ -17,6 +18,24 @@ class Diff
 
   field :diff, type: String
   field :html, type: String
+
+  def title
+    html.match(%r|<title>(.*)</title>|)
+    $1
+  end
+
+  def added
+    lines = diff.lines.select do |e|
+      e.match(/^\+/)
+    end
+
+    lines.map! do |e|
+      e.match(/^\+(.+)/)
+      $1
+    end
+
+    lines.join("\n")
+  end
 
   belongs_to :site
 end

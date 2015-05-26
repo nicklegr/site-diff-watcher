@@ -1,6 +1,9 @@
-.starter-template
-  h1 Bootstrap starter template
-  p.lead
-    | Use this document as a way to quickly start any new project.
-    br/
-    | All you get is this text and a mostly barebones HTML document.
+- @diffs.each do |e|
+  a href= e.site.url
+    = e.title
+
+  span= " " + e.created_at.strftime("%Y/%m/%d %H:%M:%S")
+
+  pre
+    = inner_text(e.added)
+  br
