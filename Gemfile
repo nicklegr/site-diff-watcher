@@ -8,4 +8,7 @@ gem 'slim'
 gem 'mongoid'
 gem 'bson_ext'
 
+gem 'nokogiri'
+gem 'diffy'
+
 gem 'pry'
