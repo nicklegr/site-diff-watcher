@@ -37,6 +37,19 @@ class Diff
     lines.join("\n")
   end
 
+  def removed
+    lines = diff.lines.select do |e|
+      e.match(/^-/)
+    end
+
+    lines.map! do |e|
+      e.match(/^-(.+)/)
+      $1
+    end
+
+    lines.join("\n")
+  end
+
   belongs_to :site
 end
 
