@@ -9,7 +9,7 @@ web:
   # restart: always
 worker:
   build: .
-  command: bundle exec ruby /usr/src/app/worker.rb
+  command: bash -c '(cd /usr/src/app && bundle exec ruby worker.rb)'
   links:
     - mongodb
   # restart: always
